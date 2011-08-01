@@ -1,0 +1,124 @@
+<style type="text/css">
+    .layer {
+        width: 300px;
+        border: 2px solid;
+        border-radius: 12px;
+        overflow: hidden;
+
+        -moz-box-shadow: 5px 5px 5px #888;
+        -webkit-box-shadow: 5px 5px 5px #888;
+        box-shadow: 5px 5px 5px #888;
+
+        font-family: sans-serif;
+
+        margin: 20px;
+    }
+
+    .layer .header {
+        height: 20px;
+        padding-top: 4px;
+        clip: auto;
+
+        background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.22, rgb(199, 199, 199)), color-stop(0.9, rgb(255, 255, 255)));
+        background-image: -moz-linear-gradient(center bottom, rgb(199, 199, 199) 22%, rgb(255, 255, 255) 90%);
+
+        border-bottom: 1px solid;
+    }
+
+    .layer .header .kontera {
+        color: #669900;
+        font-size: 9px;
+        float: left;
+        margin-left: 4px;
+        margin-top: 4px;
+    }
+
+    .layer .header .ad_choices {
+        color: gray;
+        font-size: 9px;
+        float: right;
+        margin-right: 12px;
+        margin-top: 4px;
+    }
+
+    .layer .header .close {
+        color: gray;
+        font-size: smaller;
+        float: right;
+        margin-right: 12px;
+    }
+
+    .layer .content {
+        margin: 8px;
+    }
+
+    .layer .ad_title {
+        display: block;
+        padding-bottom: 8px;
+        font-size: small;
+        font-weight: bold;
+        color: #0033ff;
+    }
+
+    .layer .ad_title:visited {
+        color: #0033ff;
+    }
+
+    .layer .ad_text {
+        display: block;
+        padding-bottom: 8px;
+        font-size: 12px;
+    }
+
+    .layer .display_url {
+        color: #669900;
+        font-size: 10px;
+    }
+
+    .layer .click_button {
+        float: right;
+
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+
+        background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.22, #669900), color-stop(0.9, #66cc00));
+        background-image: -moz-linear-gradient(center bottom, #669900 22%, #66cc00 90%);
+
+        border: 10px #000000;
+        border-radius: 2px;
+
+        font-size: 10px;
+        font-weight: bold;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    .layer .click_button:visited {
+        color: #ffffff;
+    }
+</style>
+
+
+<div class='layer'>
+    <div class='header'>
+        <span class="kontera">Kontera</span>
+        <a class="close" href="#">X</a>
+        <a class="ad_choices" href="#">Ad Choices</a>
+    </div>
+
+    <div class='content'>
+        <a class='ad_title' href="#">Ottawa Senators Store</a>
+        <span class='ad_text'>Shop for Ottawa Senators Jerseys. $4.99 3-day Shipping on all Orders.</span>
+
+        <div class='button_row'>
+            <a class='display_url' href='#'>www.FaceoffFanatics.com</a>
+            <a href="#" class='click_button'>VISIT SITE</a>
+        </div>
+    </div>
+
+    <div class='footer'>
+
+    </div>
+</div>
