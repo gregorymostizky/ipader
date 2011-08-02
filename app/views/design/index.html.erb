@@ -3,3 +3,31 @@
 <%= render :partial => 'layer_text' %>
 
 <img src="/images/layer_sample.png"/>
+
+<p>Below are all possible values</p>
+
+<form action="">
+    <input type="submit" value="Re-draw"><div style="clear: both;"></div>
+
+    <% @params.keys.sort.each do |k| %>
+        <label for='<%=k%>'><%= k %></label><input name="<%=k%>" value="<%=@params[k]%>"><div style="clear:both;"></div>
+    <% end %>
+
+<div id='editor_area'>
+</div>
+
+</form>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('[params],.layer').mouseover(function(e) {
+            e.preventDefault();
+            $('[for]').css('color','black');
+            var editable_elements = $(e.srcElement).children().andSelf();
+            editable_elements.each(function(idx, el) {
+                var param_class = $(el).attr('class');
+                $('[for^='+param_class+']').css('color','red')
+            });
+        });
+    });
+</script>

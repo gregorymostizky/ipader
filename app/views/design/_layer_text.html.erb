@@ -71,7 +71,7 @@
     }
 
     .layer .display_url {
-        color: #669900;
+        color: <%= @params['display_url_color'] || '#669900' %>;
         font-size: 10px;
     }
 
@@ -109,12 +109,12 @@
     </div>
 
     <div class='content'>
-        <a class='ad_title' href="#">Ottawa Senators Store</a>
+        <a class='ad_title' href="#"><%= @params['ad_title_text'] || 'AD Title' %></a>
         <span class='ad_text'>Shop for Ottawa Senators Jerseys. $4.99 3-day Shipping on all Orders.</span>
 
         <div class='button_row'>
-            <a class='display_url' href='#'>www.FaceoffFanatics.com</a>
-            <a href="#" class='click_button'>VISIT SITE</a>
+            <a class='display_url' href='#'><%= @params['display_url_text'] || 'www.google.com' %></a>
+            <a href="#" class='click_button'><%= (@params['click_button_text'] || 'visit site').upcase %></a>
         </div>
     </div>
 
