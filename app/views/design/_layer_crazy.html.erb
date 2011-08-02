@@ -1,0 +1,132 @@
+<style type="text/css">
+    .layer {
+        -webkit-box-shadow: rgba(250, 250, 250, 0.417969) 0px 1px 1px 0px inset;
+        -webkit-transition-delay: 0s, 0s;
+        -webkit-transition-duration: 0.25s, 0.25s;
+        -webkit-transition-property: color, text-shadow;
+        -webkit-transition-timing-function: cubic-bezier(0, 0, 0.58, 1), cubic-bezier(0, 0, 0.58, 1);
+        background-attachment: scroll;
+        background-clip: border-box;
+        background-color: transparent;
+        background-image: -webkit-gradient(linear, 0 0, 0 180, from(#2A2A2A), to(#424242));
+        background-origin: padding-box;
+        border-bottom-color: #141414;
+        border-bottom-left-radius: 7px;
+        border-bottom-right-radius: 7px;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-left-color: #141414;
+        border-left-style: solid;
+        border-left-width: 1px;
+        border-right-color: #141414;
+        border-right-style: solid;
+        border-right-width: 1px;
+        border-top-color: #141414;
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+        border-top-style: solid;
+        border-top-width: 1px;
+        box-shadow: rgba(250, 250, 250, 0.417969) 0px 1px 1px 0px inset;
+        clear: none;
+        color: #FAFAFA;
+        display: block;
+        float: right;
+        font-family: TurkishCSs, proxima-nova-1, proxima-nova-2, Helmet, Freesans, sans-serif;
+        font-size: 14px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        height: 180px;
+        line-height: 20px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        outline-color: #FAFAFA;
+        outline-style: none;
+        outline-width: 0px;
+        overflow-y: visible;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        text-shadow: transparent 0px 1px 0px;
+        vertical-align: baseline;
+        width: 500px;
+    }
+
+    .btn {
+        background-color: #666;
+        -webkit-box-shadow: inset rgba(255, 255, 255, .12) 0 3px 2px 1px, inset rgba(255, 255, 255, .08) 0 26px 1px -5px, inset rgba(0, 0, 0, .4) 0 -5px 10px, inset rgba(255, 255, 255, .15) 0 0 0 1px, rgba(0, 0, 0, .5) 0 3px 3px;
+        -moz-box-shadow: inset rgba(255, 255, 255, .12) 0 3px 2px 1px, inset rgba(255, 255, 255, .08) 0 26px 1px -5px, inset rgba(0, 0, 0, .4) 0 -5px 10px, inset rgba(255, 255, 255, .15) 0 0 0 1px, rgba(0, 0, 0, .5) 0 3px 3px;
+        -ms-box-shadow: inset rgba(255, 255, 255, .12) 0 3px 2px 1px, inset rgba(255, 255, 255, .08) 0 26px 1px -5px, inset rgba(0, 0, 0, .4) 0 -5px 10px, inset rgba(255, 255, 255, .15) 0 0 0 1px, rgba(0, 0, 0, .5) 0 3px 3px;
+        -o-box-shadow: inset rgba(255, 255, 255, .12) 0 3px 2px 1px, inset rgba(255, 255, 255, .08) 0 26px 1px -5px, inset rgba(0, 0, 0, .4) 0 -5px 10px, inset rgba(255, 255, 255, .15) 0 0 0 1px, rgba(0, 0, 0, .5) 0 3px 3px;
+        box-shadow: inset rgba(255, 255, 255, .12) 0 3px 2px 1px, inset rgba(255, 255, 255, .08) 0 26px 1px -5px, inset rgba(0, 0, 0, .4) 0 -5px 10px, inset rgba(255, 255, 255, .15) 0 0 0 1px, rgba(0, 0, 0, .5) 0 3px 3px;
+
+        text-shadow: rgba(0, 0, 0, .5) 0 1px 0;
+
+        border-radius: 6px;
+
+        -webkit-transition: background-color .1s ease-out;
+        -moz-transition: background-color .1s ease-out;
+        -ms-transition: background-color .1s ease-out;
+        -o-transition: background-color .1s ease-out;
+        transition: background-color .1s ease-out;
+
+        height: 37px;
+
+        text-transform: uppercase;
+
+        display: block;
+        padding: 5px 20px 0 40px;
+        text-align: left;
+        /*width: 100px;*/
+
+        color: white;
+
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .btn:before {
+        background: url('/images/shopcart.png') 0 0 no-repeat;
+        content: '';
+        display: block;
+        left: 36px;
+        top: 66px;
+        height: 24px;
+        opacity: .5;
+        position: absolute;
+        width: 24px;
+    }
+
+    .btn:hover:before {
+        opacity: .82;
+    }
+
+    .btn:focus, .btn:hover {
+        background-color: #454545;
+    }
+
+    .btn span {
+        color: #2a2a2a;
+        display: block;
+        font-size: 12px;
+        font-weight: normal;
+        letter-spacing: 0;
+        line-height: 12px;
+        text-shadow: rgba(255, 255, 255, .35) 0 1px 0;
+        text-transform: capitalize;
+    }
+
+</style>
+
+<div class='layer'>
+
+    <a class='btn'>
+        <%= @params['btn_text'] %>
+        <span><%= @params['btn_add_text'] %></span>
+    </a>
+
+</div>

@@ -3,7 +3,8 @@ require 'ostruct'
 class DesignController < ApplicationController
 
   def index
-    layer_source = view_context.lookup_context.find('_layer_text','design').source # hack hack hack
+    @layer_name = (params[:layer] || 'text')
+    layer_source = view_context.lookup_context.find("_layer_"+@layer_name,'design').source # hack hack hack
     all_params = layer_source.scan(/@params\[['"](.*)['"]\]/).flatten # hack hack 2
 
     @params = {}

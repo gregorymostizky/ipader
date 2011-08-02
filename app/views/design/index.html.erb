@@ -1,32 +1,54 @@
 <h3>Layer Example</h3>
 
-<%= render :partial => 'layer_text' %>
+<div id='layers_zone'>
 
-<img src="/images/layer_sample.png"/>
+    <div class="layer_view">
+        <%= render :partial => ("layer_"+@layer_name) %>
+    </div>
+
+    <div class='layer_menu'>
+        <ul>
+            <li><a href='/design?layer=text'>Simple Layer</a></li>
+            <li><a href='/design?layer=text_and_logo'>Text & Logo</a></li>
+            <li><a href='/design?layer=crazy'>Crazy?</a></li>
+        </ul>
+    </div>
+
+    <div style="clear:both;"></div>
+
+    <img src="/images/layer_sample.png"/>
+
+</div>
 
 <p>Below are all possible values</p>
 
 <form action="">
-    <input type="submit" value="Re-draw"><div style="clear: both;"></div>
+    <input type="submit" value="Re-draw">
+
+    <input type='hidden' value="<%= @layer_name %>" name="layer">
+
+    <div style="clear: both;"></div>
 
     <% @params.keys.sort.each do |k| %>
-        <label for='<%=k%>'><%= k %></label><input name="<%=k%>" value="<%=@params[k]%>"><div style="clear:both;"></div>
+        <label for='<%= k %>'><%= k %></label><input name="<%= k %>" value="<%= @params[k] %>">
+
+        <div style="clear:both;"></div>
     <% end %>
 
-<div id='editor_area'>
-</div>
+    <div id='editor_area'>
+    </div>
 
 </form>
 
 <script type="text/javascript">
-    $(document).ready(function(){
+    $(document).ready(function() {
         $('[params],.layer').mouseover(function(e) {
             e.preventDefault();
-            $('[for]').css('color','black');
+            $('[for]').css('color', 'black');
             var editable_elements = $(e.srcElement).children().andSelf();
             editable_elements.each(function(idx, el) {
                 var param_class = $(el).attr('class');
-                $('[for^='+param_class+']').css('color','red')
+                $('[for^=' + param_class + ']').css('color', 'red')
             });
         });
     });
