@@ -8,6 +8,8 @@
    @params["display_url_color"] ||= '#669900'
    @params["display_url_text"] ||= 'www.FaceoffFanatics.com'
 
+   @params["layer_background_color"] ||= 'white'
+
 %>
 
 <style type="text/css">
@@ -24,6 +26,8 @@
         font-family: sans-serif;
 
         margin: 20px;
+
+        background-color: <%= @params["layer_background_color"] %>;
     }
 
     .layer .header {
