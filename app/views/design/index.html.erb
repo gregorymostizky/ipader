@@ -10,28 +10,34 @@
         <ul>
             <li><a href='/design?layer=text'>Classic Text & Logo</a></li>
             <li><a href='/design?layer=text5'>HTML5 Text & Logo</a></li>
+            <li><a href='/design?layer=facebook_youtube'>Facebook + Youtube</a></li>
+            <li><a href='/design?layer=freedom5'>HTML5 Freedom</a></li>
+            <li><a href='/design?layer=mobile_text'>Mobile Text & Logo</a></li>
         </ul>
     </div>
 
     <div style="clear:both;"></div>
 
-    <img src="/images/layer_sample.png"/>
+    <!-- <img src="/images/layer_sample.png"/ -->
 
 </div>
 
-<p>Below are all possible values</p>
 
-<form action="">
-    <input type="submit" value="Re-draw">
+<form class='form' action="">
+    <p class="submit">
+        <input type="submit" value="Re-draw">
+    </p>
 
     <input type='hidden' value="<%= @layer_name %>" name="layer">
 
     <div style="clear: both;"></div>
 
     <% @params.keys.sort.each do |k| %>
-        <label for='<%= k %>'><%= k %></label><input name="<%= k %>" value="<%= @params[k] %>">
+        <p>
+            <input name="<%= k %>" value="<%= @params[k] %>">
+            <label for='<%= k %>'><%= k.humanize %></label>
+        </p>
 
-        <div style="clear:both;"></div>
     <% end %>
 
     <div id='editor_area'>
@@ -39,6 +45,7 @@
 
 </form>
 
+<!--
 <script type="text/javascript">
     $(document).ready(function() {
         $('[params],.layer').mouseover(function(e) {
@@ -52,3 +59,4 @@
         });
     });
 </script>
+-->
