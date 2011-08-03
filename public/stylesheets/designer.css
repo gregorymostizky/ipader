@@ -31,13 +31,14 @@ body {
 }
 
 .layer_view {
-    float: left;
-    margin-left: 40px;
+    position: absolute;
+    left: 440px;
+    top: 100px;
 }
 
 .layer_menu {
     float: right;
-    margin-top: 10px;
+    margin-top: 50px;
     margin-right: 60px;
     background: #EDEFEA;
     border-radius: 8px;

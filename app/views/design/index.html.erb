@@ -5,10 +5,6 @@
 
 <div id='layers_zone'>
 
-    <div class="layer_view">
-        <%= render :partial => ("layer_"+@layer_name) %>
-    </div>
-
     <div class='layer_menu'>
         <ul>
             <li><a href='/design?layer=text'>Classic Text & Logo</a></li>
@@ -19,6 +15,35 @@
         </ul>
     </div>
 
+    <div class="layer_view">
+        <%= render :partial => ("layer_"+@layer_name) %>
+    </div>
+
+    <div id='form-holder'>
+            <form class='form' action="">
+                <p class="submit">
+                    <input type="submit" value="Re-draw">
+                </p>
+
+                <input type='hidden' value="<%= @layer_name %>" name="layer">
+
+                <div style="clear: both;"></div>
+
+                <% @params.keys.sort.each do |k| %>
+                    <p>
+                        <input name="<%= k %>" id="<%= k %>" value="<%= @params[k] %>">
+                        <label for='<%= k %>'><%= k.humanize %></label>
+                    </p>
+
+                <% end %>
+
+                <div id='editor_area'>
+                </div>
+
+            </form>
+        </div>
+
+
     <div style="clear:both;"></div>
 
     <!-- <img src="/images/layer_sample.png"/ -->
@@ -26,30 +51,6 @@
 </div>
 
 <div style="clear: both;"></div>
-
-<div id='form-holder'>
-    <form class='form' action="">
-        <p class="submit">
-            <input type="submit" value="Re-draw">
-        </p>
-
-        <input type='hidden' value="<%= @layer_name %>" name="layer">
-
-        <div style="clear: both;"></div>
-
-        <% @params.keys.sort.each do |k| %>
-            <p>
-                <input name="<%= k %>" id="<%= k %>" value="<%= @params[k] %>">
-                <label for='<%= k %>'><%= k.humanize %></label>
-            </p>
-
-        <% end %>
-
-        <div id='editor_area'>
-        </div>
-
-    </form>
-</div>
 
 <div id="colorpicker"></div>
 
