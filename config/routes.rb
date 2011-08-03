@@ -1,4 +1,6 @@
 Ipader::Application.routes.draw do
+  root :to => 'design#index'
+
   match 'design' => 'design#index'
 
   # The priority is based upon order of creation:

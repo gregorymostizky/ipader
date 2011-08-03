@@ -1,6 +1,18 @@
+<%
+   # default params
+   @params["ad_title_text"] ||= 'Ottawa Senators Store'
+   @params["ad_title_color"] ||= 'blue'
+
+   @params["click_button_text"] ||= 'VISIT SITE'
+
+   @params["display_url_color"] ||= '#669900'
+   @params["display_url_text"] ||= 'www.FaceoffFanatics.com'
+
+%>
+
 <style type="text/css">
     .layer {
-        width: <%= @params["layer_width"] %>px;
+        width: 300px;
         border: 2px solid;
         border-radius: 12px;
         overflow: hidden;
@@ -57,7 +69,7 @@
         padding-bottom: 8px;
         font-size: small;
         font-weight: bold;
-        color: #0033ff;
+        color: <%= @params['ad_title_color']%>;
     }
 
     .layer .ad_title:visited {
@@ -113,8 +125,8 @@
         <span class='ad_text'>Shop for Ottawa Senators Jerseys. $4.99 3-day Shipping on all Orders.</span>
 
         <div class='button_row'>
-            <a class='display_url' href='#'><%= @params['display_url_text'] || 'www.google.com' %></a>
-            <a href="#" class='click_button'><%= (@params['click_button_text'] || 'visit site').upcase %></a>
+            <a class='display_url' href='#'><%= @params['display_url_text'] %></a>
+            <a href="#" class='click_button'><%= @params['click_button_text'].upcase %></a>
         </div>
     </div>
 

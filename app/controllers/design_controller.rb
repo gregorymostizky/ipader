@@ -9,7 +9,11 @@ class DesignController < ApplicationController
 
     @params = {}
     all_params.each do |k|
-      @params[k] = params[k] || ''
+      unless params[k].blank?
+        @params[k] = params[k]
+      else
+        @params[k] = nil
+      end
     end
   end
 
