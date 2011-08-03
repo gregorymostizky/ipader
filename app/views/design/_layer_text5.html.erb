@@ -1,132 +1,137 @@
+<%
+   # default params
+   @params["ad_title_text"] ||= 'Ottawa Senators Store'
+
+   @params["ad_primary_color"] ||= '#CD0074'
+   @params["ad_secondary_color"] ||= '#9FEE00'
+
+   @params["ad_text_text"] ||= 'Shop for Ottawa Senators Jerseys. $4.99 3-day Shipping on all Orders.'
+
+   @params["click_button_text"] ||= 'VISIT SITE'
+
+   @params["display_url_text"] ||= 'www.FaceoffFanatics.com'
+
+   @params["layer_gradient_start_color"] ||= '#000000'
+   @params["layer_gradient_end_color"] ||= '#45484d'
+
+%>
+
 <style type="text/css">
     .layer {
-        -webkit-box-shadow: rgba(250, 250, 250, 0.417969) 0px 1px 1px 0px inset;
-        -webkit-transition-delay: 0s, 0s;
-        -webkit-transition-duration: 0.25s, 0.25s;
-        -webkit-transition-property: color, text-shadow;
-        -webkit-transition-timing-function: cubic-bezier(0, 0, 0.58, 1), cubic-bezier(0, 0, 0.58, 1);
-        background-attachment: scroll;
-        background-clip: border-box;
-        background-color: transparent;
-        background-image: -webkit-gradient(linear, 0 0, 0 180, from(#2A2A2A), to(#424242));
-        background-origin: padding-box;
-        border-bottom-color: #141414;
-        border-bottom-left-radius: 7px;
-        border-bottom-right-radius: 7px;
-        border-bottom-style: solid;
-        border-bottom-width: 1px;
-        border-left-color: #141414;
-        border-left-style: solid;
-        border-left-width: 1px;
-        border-right-color: #141414;
-        border-right-style: solid;
-        border-right-width: 1px;
-        border-top-color: #141414;
-        border-top-left-radius: 7px;
-        border-top-right-radius: 7px;
-        border-top-style: solid;
-        border-top-width: 1px;
-        box-shadow: rgba(250, 250, 250, 0.417969) 0px 1px 1px 0px inset;
-        clear: none;
-        color: #FAFAFA;
-        display: block;
-        float: right;
-        font-family: TurkishCSs, proxima-nova-1, proxima-nova-2, Helmet, Freesans, sans-serif;
-        font-size: 14px;
-        font-style: normal;
-        font-variant: normal;
-        font-weight: normal;
-        height: 180px;
-        line-height: 20px;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        outline-color: #FAFAFA;
-        outline-style: none;
-        outline-width: 0px;
-        overflow-y: visible;
-        padding-bottom: 10px;
-        padding-left: 10px;
-        padding-right: 10px;
-        padding-top: 10px;
-        text-shadow: transparent 0px 1px 0px;
-        vertical-align: baseline;
-        width: 500px;
+        width: 400px;
+        height: 260px;
+
+        background: <%= @params["layer_gradient_end_color"] %>; /* Old browsers */
+        background: -moz-linear-gradient(top, <%= @params["layer_gradient_end_color"] %> 0%, <%= @params["layer_gradient_start_color"] %> 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, <%= @params["layer_gradient_end_color"] %>), color-stop(100%, <%= @params["layer_gradient_start_color"] %>)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, <%= @params["layer_gradient_end_color"] %> 0%, <%= @params["layer_gradient_start_color"] %> 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, <%= @params["layer_gradient_end_color"] %> 0%, <%= @params["layer_gradient_start_color"] %> 100%); /* Opera11.10+ */
+        background: -ms-linear-gradient(top, <%= @params["layer_gradient_end_color"] %> 0%, <%= @params["layer_gradient_start_color"] %> 100%); /* IE10+ */
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '<%= @params["layer_gradient_end_color"] %>', endColorstr = '<%= @params["layer_gradient_start_color"] %>', GradientType = 0); /* IE6-9 */
+        background: linear-gradient(top, <%= @params["layer_gradient_end_color"] %> 0%, <%= @params["layer_gradient_start_color"] %> 100%); /* W3C */
+
+        border: 1px solid #fff;
+
+        border-radius: 3px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+
+        -moz-box-shadow: 2px 1px 4px 4px rgba(10, 10, 10, .5);
+        -webkit-box-shadow: 2px 1px 4px 4px rgba(10, 10, 10, .5);
+        box-shadow: 2px 1px 6px 4px rgba(10, 10, 10, .5);
+
+        color: #fff;
+
+        text-align: center;
     }
 
-    .btn {
-        background-color: #666;
-        -webkit-box-shadow: inset rgba(255, 255, 255, .12) 0 3px 2px 1px, inset rgba(255, 255, 255, .08) 0 26px 1px -5px, inset rgba(0, 0, 0, .4) 0 -5px 10px, inset rgba(255, 255, 255, .15) 0 0 0 1px, rgba(0, 0, 0, .5) 0 3px 3px;
-        -moz-box-shadow: inset rgba(255, 255, 255, .12) 0 3px 2px 1px, inset rgba(255, 255, 255, .08) 0 26px 1px -5px, inset rgba(0, 0, 0, .4) 0 -5px 10px, inset rgba(255, 255, 255, .15) 0 0 0 1px, rgba(0, 0, 0, .5) 0 3px 3px;
-        -ms-box-shadow: inset rgba(255, 255, 255, .12) 0 3px 2px 1px, inset rgba(255, 255, 255, .08) 0 26px 1px -5px, inset rgba(0, 0, 0, .4) 0 -5px 10px, inset rgba(255, 255, 255, .15) 0 0 0 1px, rgba(0, 0, 0, .5) 0 3px 3px;
-        -o-box-shadow: inset rgba(255, 255, 255, .12) 0 3px 2px 1px, inset rgba(255, 255, 255, .08) 0 26px 1px -5px, inset rgba(0, 0, 0, .4) 0 -5px 10px, inset rgba(255, 255, 255, .15) 0 0 0 1px, rgba(0, 0, 0, .5) 0 3px 3px;
-        box-shadow: inset rgba(255, 255, 255, .12) 0 3px 2px 1px, inset rgba(255, 255, 255, .08) 0 26px 1px -5px, inset rgba(0, 0, 0, .4) 0 -5px 10px, inset rgba(255, 255, 255, .15) 0 0 0 1px, rgba(0, 0, 0, .5) 0 3px 3px;
-
-        text-shadow: rgba(0, 0, 0, .5) 0 1px 0;
-
-        border-radius: 6px;
-
-        -webkit-transition: background-color .1s ease-out;
-        -moz-transition: background-color .1s ease-out;
-        -ms-transition: background-color .1s ease-out;
-        -o-transition: background-color .1s ease-out;
-        transition: background-color .1s ease-out;
-
-        height: 37px;
-
+    .ad_title {
+        padding-top: 24px;
+        font-size: 28px;
         text-transform: uppercase;
-
-        display: block;
-        padding: 5px 20px 0 40px;
-        text-align: left;
-        /*width: 100px;*/
-
         color: white;
-
-        font-size: 14px;
-        font-weight: bold;
-        letter-spacing: 1px;
+        text-shadow: 0 0 70px <%= @params["ad_primary_color"] %>, 0 0 80px <%= @params["ad_primary_color"] %>, 0 0 100px <%= @params["ad_primary_color"] %>, 0 0 150px <%= @params["ad_primary_color"] %>;
     }
 
-    .btn:before {
-        background: url('/images/shopcart.png') 0 0 no-repeat;
-        content: '';
-        display: block;
-        left: 36px;
-        top: 66px;
-        height: 24px;
-        opacity: .5;
-        position: absolute;
-        width: 24px;
+    .ad_text {
+        padding: 0px 20px 0px 20px;
+        color: <%= @params["ad_secondary_color"] %>;
+        font-size: 18px;
+        text-align: center;
+        width: 200px;
+        height: 70px;
+        overflow: hidden;
     }
 
-    .btn:hover:before {
-        opacity: .82;
+    .click_button {
+        margin-top: 20px;
     }
 
-    .btn:focus, .btn:hover {
-        background-color: #454545;
+    .click_button a {
+        padding: 10px 20px;
+
+        /*background: -webkit-linear-gradient(top, #85004B 0%, #992667 100%); *//* Chrome10+,Safari5.1+ */
+        /*background: linear-gradient(top, #85004B 0%, #992667 100%);*/
+
+        color: #fff;
+        font-size: 22px;
+        text-decoration: none;
+
+        text-shadow: 0 0 70px <%= @params["ad_primary_color"] %>, 0 0 80px <%= @params["ad_primary_color"] %>;
+
+        border-radius: 3px;
     }
 
-    .btn span {
-        color: #2a2a2a;
-        display: block;
+    .header {
+        border-bottom: 1px solid #666;
+        font-weight: 200;
         font-size: 12px;
-        font-weight: normal;
-        letter-spacing: 0;
-        line-height: 12px;
-        text-shadow: rgba(255, 255, 255, .35) 0 1px 0;
-        text-transform: capitalize;
+        color: #888;
+        padding: 4px 0px 4px 24px;
+        text-align: left;
     }
 
+    .header a {
+        color: #666;
+        float: right;
+        padding-right: 8px;
+    }
+
+    .ad_logo {
+        float: left;
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+
+    .ad_logo img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .display_url a {
+        color: <%= @params["ad_primary_color"] %>;
+        font-size: 12px;
+    }
 </style>
 
-<div class='layer'>
 
-    <a class='btn'>
-        <%= @params['btn_text'] %>
-        <span><%= @params['btn_add_text'] %></span>
-    </a>
+<div class="layer">
+    <div class="header">
+        Powered By Kontera
+        <a href="#">Close</a>
+        <a href="#">Ad Choices</a>
+    </div>
+
+    <div class="ad_title"><%= @params['ad_title_text'] %></div>
+
+    <div class="ad_logo"><img src="/images/jersey2.jpg"></div>
+
+    <div style="float:left; margin-top: 20px;">
+        <div class="ad_text"><%= @params["ad_text_text"] %></div>
+        <div class="click_button"><a href="#"><%= @params["click_button_text"] %></a></div>
+        <div class="display_url"><a href="#"><%= @params["display_url_text"] %></a></div>
+        <div style="clear:both;"></div>
+    </div>
+
 
 </div>

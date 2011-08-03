@@ -3,6 +3,8 @@
    @params["ad_title_text"] ||= 'Ottawa Senators Store'
    @params["ad_title_color"] ||= '#0000FF'
 
+   @params["ad_text_text"] ||= 'Shop for Ottawa Senators Jerseys. $4.99 3-day Shipping on all Orders.'
+
    @params["click_button_text"] ||= 'VISIT SITE'
 
    @params["display_url_color"] ||= '#669900'
@@ -130,7 +132,7 @@
 
     <div class='content'>
         <a class='ad_title' href="#"><%= @params['ad_title_text'] || 'AD Title' %></a>
-        <span class='ad_text'>Shop for Ottawa Senators Jerseys. $4.99 3-day Shipping on all Orders.</span>
+        <span class='ad_text'><%= @params["ad_text_text"] %></span>
 
         <div class='button_row'>
             <a class='display_url' href='#'><%= @params['display_url_text'] %></a>
