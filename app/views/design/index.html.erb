@@ -1,3 +1,7 @@
+<script type="text/javascript" src="/farbtastic/farbtastic.js"></script>
+<link rel="stylesheet" href="/farbtastic/farbtastic.css" type="text/css"/>
+
+
 <div id='layers_zone'>
 
     <div class="layer_view">
@@ -20,28 +24,47 @@
 
 </div>
 
+<div style="clear: both;"></div>
 
-<form class='form' action="">
-    <p class="submit">
-        <input type="submit" value="Re-draw">
-    </p>
-
-    <input type='hidden' value="<%= @layer_name %>" name="layer">
-
-    <div style="clear: both;"></div>
-
-    <% @params.keys.sort.each do |k| %>
-        <p>
-            <input name="<%= k %>" value="<%= @params[k] %>">
-            <label for='<%= k %>'><%= k.humanize %></label>
+<div id='form-holder'>
+    <form class='form' action="">
+        <p class="submit">
+            <input type="submit" value="Re-draw">
         </p>
 
-    <% end %>
+        <input type='hidden' value="<%= @layer_name %>" name="layer">
 
-    <div id='editor_area'>
-    </div>
+        <div style="clear: both;"></div>
 
-</form>
+        <% @params.keys.sort.each do |k| %>
+            <p>
+                <input name="<%= k %>" id="<%= k %>" value="<%= @params[k] %>">
+                <label for='<%= k %>'><%= k.humanize %></label>
+            </p>
+
+        <% end %>
+
+        <div id='editor_area'>
+        </div>
+
+    </form>
+</div>
+
+<div id="colorpicker"></div>
+
+<div style="clear:both;"></div>
+
+
+<!-- Color Picker -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('[name$=color]').focus(function(e) {
+            console.log(e.srcElement);
+            $('#colorpicker').farbtastic(e.srcElement);
+        });
+    });
+</script>
+
 
 <!--
 <script type="text/javascript">

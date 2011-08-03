@@ -17,6 +17,18 @@ body {
     margin-left: 120px;
 }
 
+#form-holder {
+    display: block;
+    float: left;
+    margin-left: 40px;
+}
+
+#colorpicker {
+    float: left;
+    margin-left: 60px;
+    margin-top: 60px;
+}
+
 input {
     padding: 9px;
     border: solid 1px #E5E5E5;
@@ -31,7 +43,6 @@ input:hover, input:focus {
 }
 
 .form {
-    margin-left: 40px;
 }
 
 .form label {
