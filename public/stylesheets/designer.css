@@ -2,25 +2,72 @@ body {
     /*background-image: url("/images/light-tile.gif");*/
     /*background-repeat: repeat;*/
 
-    background-attachment: fixed;
     background-color: white;
     background-image: url('/images/main_bg.jpg');
+    background-repeat: no-repeat;
+    background-position: 0px 40px;
+
+    margin: 0px;
+
+    overflow-y: scroll;
+}
+
+.top {
+    height: 30px;
+    background-color: #EDEFEA;
+    margin: 0px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.top span {
+    font-weight: 500;
+    color: #444;
+    font-size: 24px;
+}
+
+#layers_zone {
+    padding-top: 20px;
 }
 
 .layer_view {
     float: left;
-    margin-left: 20px;
+    margin-left: 40px;
 }
 
 .layer_menu {
-    float: left;
-    margin-left: 120px;
+    float: right;
+    margin-top: 10px;
+    margin-right: 60px;
+    background: #EDEFEA;
+    border-radius: 8px;
+}
+
+.layer_menu ul {
+    padding: 0px 20px 0px 20px;
+}
+.layer_menu li {
+    list-style-type: none;
+}
+
+.layer_menu a {
+    color: #444;
+    font-size: 18px;
+    font-family: Arial sans-serif;
+    text-decoration: none;
+    line-height: 29px;
+    height: 29px;
+    width: 240px;
+}
+
+.layer_menu a:hover {
+    color: #617798;
 }
 
 #form-holder {
     display: block;
     float: left;
-    margin-left: 40px;
+    margin-left: 60px;
 }
 
 #colorpicker {
