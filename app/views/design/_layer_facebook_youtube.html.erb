@@ -1,0 +1,92 @@
+<%
+   @params["ad_width"] ||= "400";
+   @params["ad_height"] ||= "300";
+   @params["youtube_uid"] ||= "O_bvEoao2Ps"
+   @params["layer_gradient_start_color"] ||= '#fef6f6'
+   @params["layer_gradient_end_color"] ||= '#000000'
+
+%>
+
+
+<style type="text/css">
+    .layer {
+        width: <%= @params["ad_width"]%>px;
+        height: <%= @params["ad_height"]%>px;
+
+        background: <%= @params["layer_gradient_end_color"] %>;
+        background: -moz-linear-gradient(top, <%= @params["layer_gradient_end_color"] %> 0%, <%= @params["layer_gradient_start_color"] %> 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, <%= @params["layer_gradient_end_color"] %>), color-stop(100%, <%= @params["layer_gradient_start_color"] %>));
+        background: -webkit-linear-gradient(top, <%= @params["layer_gradient_end_color"] %> 0%, <%= @params["layer_gradient_start_color"] %> 100%);
+        background: -o-linear-gradient(top, <%= @params["layer_gradient_end_color"] %> 0%, <%= @params["layer_gradient_start_color"] %> 100%);
+        background: -ms-linear-gradient(top, <%= @params["layer_gradient_end_color"] %> 0%, <%= @params["layer_gradient_start_color"] %> 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '<%= @params["layer_gradient_end_color"] %>', endColorstr = '<%= @params["layer_gradient_start_color"] %>', GradientType = 0);
+        background: linear-gradient(top, <%= @params["layer_gradient_end_color"] %> 0%, <%= @params["layer_gradient_start_color"] %> 100%);
+
+        border: 1px solid #fff;
+
+        border-radius: 3px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+
+        -moz-box-shadow: 2px 1px 4px 4px rgba(10, 10, 10, .5);
+        -webkit-box-shadow: 2px 1px 4px 4px rgba(10, 10, 10, .5);
+        box-shadow: 2px 1px 6px 4px rgba(10, 10, 10, .5);
+
+        color: #fff;
+
+        text-align: center;
+    }
+
+    .header {
+        border-bottom: 1px solid #666;
+        font-weight: 200;
+        font-size: 12px;
+        color: #888;
+        padding: 4px 0px 4px 24px;
+        text-align: left;
+    }
+
+    .header a {
+        color: #666;
+        float: right;
+        padding-right: 8px;
+    }
+
+</style>
+
+
+<div class="layer">
+    <div class="header">
+        Powered By Kontera
+        <a href="#">Close</a>
+        <a href="#">Ad Choices</a>
+    </div>
+
+    <iframe width="<%= @params["ad_width"] %>" height="<%= @params["ad_height"].to_i - 60 %>" src="http://www.youtube.com/embed/<%= @params["youtube_uid"] %>" frameborder="0" allowfullscreen></iframe>
+    <div id="fb-root"></div>
+    <script src="http://connect.facebook.net/en_US/all.js#appId=150868531660709&amp;xfbml=1"></script>
+
+    <div class="social">
+        <div class="fb" style="float:left; width: <%= @params["ad_width"].to_i - 80 %>px;">
+            <fb:like href="http://youtu.be/<%= @params["youtube_uid"] %>" send="true" width="<%= @params["ad_width"].to_i - 80 %>" show_faces="true" font=""></fb:like>
+        </div>
+
+        <div class="gplus" style="float: left; vertical-align: center;">
+            <g:plusone size="small" href="http://youtu.be/<%= @params["youtube_uid"] %>"></g:plusone>
+
+            <script type="text/javascript">
+                (function() {
+                    var po = document.createElement('script');
+                    po.type = 'text/javascript';
+                    po.async = true;
+                    po.src = 'https://apis.google.com/js/plusone.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(po, s);
+                })();
+            </script>
+
+
+        </div>
+
+    </div>
+</div>
