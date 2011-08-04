@@ -2,6 +2,8 @@
    # default params
    @params["ad_title_text"] ||= 'Ottawa Senators Store'
 
+   @params["ad_choice_text"] ||= "Ad Choices"
+
    @params["ad_primary_color"] ||= '#CD0074'
    @params["ad_secondary_color"] ||= '#9FEE00'
 
@@ -119,7 +121,7 @@
     <div class="header">
         Powered By Kontera
         <a href="#">Close</a>
-        <a href="#">Ad Choices</a>
+        <a href="#"><%= @params["ad_choice_text"]%></a>
     </div>
 
     <div class="ad_title"><%= @params['ad_title_text'] %></div>
