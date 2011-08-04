@@ -21,9 +21,17 @@
     </div>
 
     <div id='form-holder'>
-            <form class='form' action="">
+            <form id="layer_params_form" class='form' action="">
                 <p class="submit">
                     <input type="submit" value="Re-draw">
+
+                    <input type="submit" id='live_preview' value="Live Preview">
+                    <script type="text/javascript">
+                        $('#live_preview').click(function(e) {
+                            e.preventDefault();
+                            $('#layer_params_form').attr('action','/design/live').attr('target','_blank').submit();
+                        });
+                    </script>
                 </p>
 
                 <input type='hidden' value="<%= @layer_name %>" name="layer">
