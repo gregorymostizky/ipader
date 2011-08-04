@@ -21,7 +21,7 @@
     </div>
 
     <div id='form-holder'>
-            <form id="layer_params_form" class='form' action="">
+            <form id="layer_params_form" class='form' action="" method="post" enctype="multipart/form-data">
                 <p class="submit">
                     <input type="submit" value="Re-draw">
 
@@ -40,10 +40,10 @@
 
                 <% @params.keys.sort.each do |k| %>
                     <p>
-                        <input name="<%= k %>" id="<%= k %>" value="<%= @params[k] %>">
+                        <% input_type = (k =~ /file$/i) ? 'file' : 'text' %>
+                        <input name="<%= k %>" id="<%= k %>" value="<%= @params[k] %>" type="<%= input_type %>">
                         <label for='<%= k %>'><%= k.humanize %></label>
                     </p>
-
                 <% end %>
 
                 <div id='editor_area'>
@@ -75,7 +75,6 @@
         });
     });
 </script>
-
 
 <!--
 <script type="text/javascript">

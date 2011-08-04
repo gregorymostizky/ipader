@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 require 'ostruct'
 
 class DesignController < ApplicationController
@@ -29,7 +31,18 @@ class DesignController < ApplicationController
 
     all_params.each do |k|
       unless params[k].blank?
-        @params[k] = params[k]
+
+        if k =~ /file$/
+          # we got a file we need to save
+          file = params[k]
+          filename = '/upload/' + file.original_filename
+          FileUtils.copy(file.tempfile, Rails.root.to_s + '/public' + filename)
+
+          #point UI at saved file
+          @params[k] = filename
+        else
+          @params[k] = params[k]
+        end
       else
         @params[k] = nil
       end
