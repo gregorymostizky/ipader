@@ -10,7 +10,7 @@ class DesignController < ApplicationController
 
   def live
     process_params
-    @layer_url = "/design/layer?" + @params.map { |k,v| "#{k}=#{CGI.escape(v)}" }.join('&')
+    @layer_url = "/design/layer?" + @params.map { |k, v| "#{k}=#{CGI.escape(v)}" }.join('&')
     @layer_url += '&layer='+params[:layer]
     render :foxnews, :layout => false
   end
@@ -24,28 +24,40 @@ class DesignController < ApplicationController
 
   def process_params
     @layer_name = (params[:layer] || 'text')
-    layer_source = view_context.lookup_context.find("_layer_"+@layer_name,'design').source # hack hack hack
+    layer_source = view_context.lookup_context.find("_layer_"+@layer_name, 'design').source # hack hack hack
     all_params = layer_source.scan(/@params\[['"](\w+)['"]\]/).flatten # hack hack 2
 
     @params = {}
 
     all_params.each do |k|
-      unless params[k].blank?
+      # do we need to provide a file ?
+      if k =~ /_file$/
 
-        if k =~ /file$/
-          # we got a file we need to save
+        # we actually have a file to save
+        if params[k] && params[k].class != String
           file = params[k]
           filename = '/upload/' + file.original_filename
           FileUtils.copy(file.tempfile, Rails.root.to_s + '/public' + filename)
 
-          #point UI at saved file
+            #point UI at saved file
           @params[k] = filename
-        else
-          @params[k] = params[k]
+
+        # we have prev. uploaded file
+        elsif params[k+'_uploaded'] || params[k].class == String
+          file_url = params[k+'_uploaded'] || params[k]
+          @params[k] = file_url
         end
+
+        # normal (non-file) parameter
       else
-        @params[k] = nil
+        unless params[k].blank?
+          @params[k] = params[k]
+        else
+          @params[k] = nil
+        end
       end
+
     end
+
   end
 end

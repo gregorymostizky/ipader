@@ -23,13 +23,17 @@
     <div id='form-holder'>
             <form id="layer_params_form" class='form' action="" method="post" enctype="multipart/form-data">
                 <p class="submit">
-                    <input type="submit" value="Re-draw">
+                    <input type="submit" id='reload' value="Re-draw">
 
                     <input type="submit" id='live_preview' value="Live Preview">
                     <script type="text/javascript">
                         $('#live_preview').click(function(e) {
                             e.preventDefault();
                             $('#layer_params_form').attr('action','/design/live').attr('target','_blank').submit();
+                        });
+                        $('#reload').click(function(e) {
+                            e.preventDefault();
+                            $('#layer_params_form').attr('action','/design').attr('target','').submit();
                         });
                     </script>
                 </p>
@@ -40,8 +44,12 @@
 
                 <% @params.keys.sort.each do |k| %>
                     <p>
-                        <% input_type = (k =~ /file$/i) ? 'file' : 'text' %>
-                        <input name="<%= k %>" id="<%= k %>" value="<%= @params[k] %>" type="<%= input_type %>">
+                        <% if k =~ /file$/i %>
+                            <input name="<%= k %>" id="<%= k %>"  type="file">
+                            <input name="<%= k+'_uploaded' %>" value="<%= @params[k] %>" type="hidden">
+                        <% else %>
+                            <input name="<%= k %>" value="<%= @params[k] %>" >
+                        <% end  %>
                         <label for='<%= k %>'><%= k.humanize %></label>
                     </p>
                 <% end %>
