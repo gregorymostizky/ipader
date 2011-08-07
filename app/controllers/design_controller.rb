@@ -15,7 +15,7 @@ class DesignController < ApplicationController
     @layer_url = "/design/layer?" + @params.map { |k, v| "#{k}=#{CGI.escape(v || '')}" }.join('&')
     @layer_url += '&layer='+params[:layer]
 	page = :cnn
-	page = :cnn_mobile if layer =~ /mobile/
+	page = :cnn_mobile if params[:layer] =~ /mobile/
     render page, :layout => false
   end
 
