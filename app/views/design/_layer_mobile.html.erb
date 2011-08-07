@@ -1,0 +1,37 @@
+<%
+@params["background_color"] ||= "black"
+@params["tel"] ||= "123456"
+@params["animation_direction"] ||= 'horizontal'
+@params["main_img_file"] ||= "/images/renault-1.png"
+@params["call_img_file"] ||= "/images/callus.png"
+
+%>
+<html>
+<head>
+<meta name="viewport" content="width=320" />                                        
+<meta name="viewport" content="initial-scale=1, user-scalable=false" />
+<script>
+	var animation_direction = '<%= @params["animation_direction"] %>';
+</script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$('#img_phone').click(function(){
+		var a = 'tel://<%= @params["tel"] %>'
+		window.location = a;
+	})
+})
+</script>
+</head>
+<body>
+<!--div onclick="window.parent.konaCloseLayer();" style="background-color:<%= @params["background_color"] %>; height:100%; width:100%;opacity:1;position:absolute; left:0px;"-->
+<div onclick="window.parent.console.log(9999);" style="background-color:red; height:100%; width:100%;opacity:1;position:absolute; left:0px;">
+<div style="margin-top:100px;">
+<img src=<%= @params["main_img_file"] %> style="width:320px; height: 250px;"></img>
+</div>
+<div><img id='img_phone' src=<%= @params["call_img_file"] %> style ="width:320px; height:40px;"></img>
+</div>
+</div>
+</body>
+</head>
+</html>
