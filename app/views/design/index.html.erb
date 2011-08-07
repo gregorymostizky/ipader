@@ -1,25 +1,27 @@
 <script type="text/javascript" src="/farbtastic/farbtastic.js"></script>
 <link rel="stylesheet" href="/farbtastic/farbtastic.css" type="text/css"/>
 
-<div class='top'><span>Layer Composer</span></div>
+<div class='top'><span>Layer Composer - Kontera Innovation Day 2011</span></div>
 
 <div id='layers_zone'>
 
     <div class="top_buttons">
         <p class="submit">
-            <!-- <input type="submit" id='reload' value="Re-draw"> -->
-
             <input type="submit" id='live_preview' value="Live Preview">
+            <input type="submit" id='email_preview' value="Email Preview">
             <script type="text/javascript">
                 $('#live_preview').click(function(e) {
                     e.preventDefault();
                     $('#layer_params_form').attr('action', '/design/live').attr('target', '_blank').submit();
                 });
-//                $('#reload').click(function(e) {
-//                    e.preventDefault();
-//                    $('#layer_params_form').attr('action', '/design').attr('target', '').submit();
-//                });
+                $('#email_preview').click(function(e) {
+                    e.preventDefault();
+                    var email = $('#email')[0].value;
+                    $('#layer_params_form').attr('action', '/design/email?email='+email).attr('target', '').submit();
+                });
             </script>
+
+            <input id='email' name='email' size='40'>
         </p>
     </div>
 
@@ -91,8 +93,6 @@
 
 <div style="clear: both;"></div>
 
-<div style="clear:both;"></div>
-
 
 <!-- Color Picker -->
 <script type="text/javascript">
@@ -101,7 +101,7 @@
             console.log(e.srcElement);
             $('.colorpicker div').farbtastic(e.srcElement);
         });
-        $('[name]').focusout(function(e) {
+        $('#form-holder [name]').focusout(function(e) {
             $('#layer_params_form').attr('action', '/design').attr('target', '').submit();
         });
 

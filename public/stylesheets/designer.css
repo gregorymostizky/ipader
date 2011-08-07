@@ -10,6 +10,7 @@ body {
     margin: 0px;
 
     overflow-y: scroll;
+    overflow-x: hidden;
     /*overflow: hidden;*/
 }
 
@@ -134,6 +135,12 @@ input:hover, input:focus {
 
 #live_preview {
     background: #cc0000;
+    padding:  14px 16px;
+    margin-left: 8px;
+}
+
+#email_preview {
+    background: #006600;
     padding:  14px 16px;
     margin-left: 8px;
 }

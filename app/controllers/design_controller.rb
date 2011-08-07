@@ -1,6 +1,8 @@
 #encoding: utf-8
 
 require 'ostruct'
+require 'net/smtp'
+
 
 class DesignController < ApplicationController
 
@@ -15,12 +17,25 @@ class DesignController < ApplicationController
     render :kake_sport, :layout => false
   end
 
+  def email
+    process_params
+    @layer_url = "http://" + request.domain
+    @layer_url += ":#{request.port}" if request.port
+    @layer_url += "/design/layer?" + @params.map { |k, v| "#{k}=#{CGI.escape(v || '')}" }.join('&')
+    @layer_url += '&layer='+params[:layer]
+
+    email = params[:email] || 'gregory.mostizky@kontera.com'
+    Notifier.welcome_email(@layer_url, email).deliver
+
+    render 'index'
+  end
+
   def layer
     process_params
     render :partial => "layer_" + @layer_name, :layout => false
   end
 
-  #### ihs
+    #### ihs
   def balls
     render 'balls', :layout => false
   end
@@ -47,7 +62,7 @@ class DesignController < ApplicationController
             #point UI at saved file
           @params[k] = filename
 
-        # we have prev. uploaded file
+          # we have prev. uploaded file
         elsif params[k+'_uploaded'] || params[k].class == String
           file_url = params[k+'_uploaded'] || params[k]
           @params[k] = file_url
@@ -65,4 +80,6 @@ class DesignController < ApplicationController
     end
 
   end
+
 end
+
