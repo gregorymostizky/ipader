@@ -7,18 +7,17 @@
 
     <div class="top_buttons">
         <p class="submit">
-            <!-- <input type="submit" id='reload' value="Re-draw"> -->
-
             <input type="submit" id='live_preview' value="Live Preview">
+            <input type="submit" id='email_preview' value="Email Preview">
             <script type="text/javascript">
                 $('#live_preview').click(function(e) {
                     e.preventDefault();
                     $('#layer_params_form').attr('action', '/design/live').attr('target', '_blank').submit();
                 });
-//                $('#reload').click(function(e) {
-//                    e.preventDefault();
-//                    $('#layer_params_form').attr('action', '/design').attr('target', '').submit();
-//                });
+                $('#email_preview').click(function(e) {
+                    e.preventDefault();
+                    $('#layer_params_form').attr('action', '/design/email').attr('target', '').submit();
+                });
             </script>
         </p>
     </div>
