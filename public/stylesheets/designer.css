@@ -9,7 +9,8 @@ body {
 
     margin: 0px;
 
-    overflow-y: scroll;
+    /*overflow-y: scroll;*/
+    overflow: hidden;
 }
 
 .top {

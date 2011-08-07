@@ -20,6 +20,11 @@ class DesignController < ApplicationController
     render :partial => "layer_" + @layer_name, :layout => false
   end
 
+  #### ihs
+  def balls
+    render 'balls', :layout => false
+  end
+
   protected
 
   def process_params
