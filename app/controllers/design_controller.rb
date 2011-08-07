@@ -24,7 +24,8 @@ class DesignController < ApplicationController
     @layer_url += "/design/layer?" + @params.map { |k, v| "#{k}=#{CGI.escape(v || '')}" }.join('&')
     @layer_url += '&layer='+params[:layer]
 
-    Notifier.welcome_email(@layer_url).deliver
+    email = params[:email] || 'gregory.mostizky@kontera.com'
+    Notifier.welcome_email(@layer_url, email).deliver
 
     render 'index'
   end

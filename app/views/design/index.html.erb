@@ -16,9 +16,12 @@
                 });
                 $('#email_preview').click(function(e) {
                     e.preventDefault();
-                    $('#layer_params_form').attr('action', '/design/email').attr('target', '').submit();
+                    var email = $('#email')[0].value;
+                    $('#layer_params_form').attr('action', '/design/email?email='+email).attr('target', '').submit();
                 });
             </script>
+
+            <input id='email' name='email' size='40'>
         </p>
     </div>
 
@@ -100,7 +103,7 @@
             console.log(e.srcElement);
             $('.colorpicker div').farbtastic(e.srcElement);
         });
-        $('[name]').focusout(function(e) {
+        $('#form-holder [name]').focusout(function(e) {
             $('#layer_params_form').attr('action', '/design').attr('target', '').submit();
         });
 
