@@ -25,7 +25,7 @@ var theme;
 var worldAABB, world, iterations = 1, timeStep = 1 / 20;
 
 var walls = [];
-var wall_thickness = 200;
+var wall_thickness = 2000;
 var wallsSetted = false;
 
 var bodies, elements, text;
@@ -97,7 +97,7 @@ function reset() {
 
 	// color theme
 	theme = themes[ Math.random() * themes.length >> 0 ];
-	document.body.style[ 'backgroundColor' ] = theme[ 0 ];
+//	document.body.style[ 'backgroundColor' ] = theme[ 0 ];
 
 	bodies = [];
 	elements = [];
@@ -366,13 +366,13 @@ function createKonteraBall() {
 	var circle = new b2CircleDef();
 	circle.radius = size / 2;
 	circle.density = 1;
-	circle.friction = 0.3;
-	circle.restitution = 0.3;
+	circle.friction = 100;
+	circle.restitution = 0.01;
 	b2body.AddShape(circle);
 	b2body.userData = {element: element};
 
 	b2body.position.Set( Math.random() * stage[2], Math.random() * -200 );
-	b2body.linearVelocity.Set( Math.random() * 400 - 200, Math.random() * 400 - 200 );
+	b2body.linearVelocity.Set( /*Math.random() * 400 - 20*/ -12, Math.random() * 400 - 200 );
 	bodies.push( world.CreateBody(b2body) );	
 }
 
@@ -418,7 +418,7 @@ function createBall( x, y ) {
 	b2body.userData = {element: element};
 
 	b2body.position.Set( x, y );
-	b2body.linearVelocity.Set( Math.random() * 400 - 200, Math.random() * 400 - 200 );
+	b2body.linearVelocity.Set( Math.random() * 400 - 200, Math.random() * 200 - 200 );
 	bodies.push( world.CreateBody(b2body) );
 }
 
@@ -432,11 +432,11 @@ function loop() {
 
 	}
 
-	delta[0] += (0 - delta[0]) * .5;
-	delta[1] += (0 - delta[1]) * .5;
+	delta[0] += (0 - delta[0]) * .1;
+	delta[1] += (0 - delta[1]) * .1;
 
-	world.m_gravity.x = orientation.x * 350 + delta[0];
-	world.m_gravity.y = orientation.y * 350 + delta[1];
+	world.m_gravity.x = orientation.x * 35 + delta[0];
+	world.m_gravity.y = orientation.y * 35 + delta[1];
 
 	mouseDrag();
 	world.Step(timeStep, iterations);
@@ -595,10 +595,13 @@ function setWalls() {
 		walls[3] = null;
 	}
 
-	walls[0] = createBox(world, stage[2] / 2, - wall_thickness, stage[2], wall_thickness);
-	walls[1] = createBox(world, stage[2] / 2, stage[3] + wall_thickness, stage[2], wall_thickness);
-	walls[2] = createBox(world, - wall_thickness, stage[3] / 2, wall_thickness, stage[3]);
-	walls[3] = createBox(world, stage[2] + wall_thickness, stage[3] / 2, wall_thickness, stage[3]);	
+//	walls[0] = createBox(world, stage[2] / 2, - wall_thickness, stage[2], wall_thickness);
+	walls[0] = createBox(world, stage[2] / 2, stage[3] + wall_thickness, stage[2], wall_thickness);
+//	walls[1] = createBox(world, stage[2] / 2, stage[3] + wall_thickness, stage[2], wall_thickness);
+//	walls[2] = createBox(world, stage[2] / 2, stage[3] + wall_thickness, stage[2], wall_thickness);
+//	walls[3] = createBox(world, stage[2] / 2, stage[3] + wall_thickness, stage[2], wall_thickness);
+//	walls[2] = createBox(world, - wall_thickness, stage[3] / 2, wall_thickness, stage[3]);
+//	walls[3] = createBox(world, stage[2] + wall_thickness, stage[3] / 2, wall_thickness, stage[3]);
 
 	wallsSetted = true;
 
