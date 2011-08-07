@@ -12,6 +12,7 @@
 
    @params["layer_background_color"] ||= '#FFFFFF'
 
+   @params["image_file"] ||= "/images/jersey2.jpg"
 %>
 
 <style type="text/css">
@@ -86,12 +87,6 @@
         color: #0033ff;
     }
 
-    .layer .ad_text {
-        display: block;
-        padding-bottom: 8px;
-        font-size: 12px;
-    }
-
     .layer .display_url {
         color: <%= @params['display_url_color'] || '#669900' %>;
         font-size: 10px;
@@ -120,6 +115,26 @@
     .layer .click_button:visited {
         color: #ffffff;
     }
+
+    .ad_logo {
+        float: left;
+    }
+
+    .ad_logo img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .layer .ad_text {
+        margin-left: 20px;
+        margin-top: 10px;
+        float: left;
+        width: 160px;
+        display: block;
+        padding-bottom: 8px;
+        font-size: 12px;
+    }
+
 </style>
 
 
@@ -132,7 +147,14 @@
 
     <div class='content'>
         <a class='ad_title' href="#"><%= @params['ad_title_text'] || 'AD Title' %></a>
-        <span class='ad_text'><%= @params["ad_text_text"] %></span>
+
+        <div class='ad_row'>
+            <div class="ad_logo"><img src="<%= @params["image_file"] %>"></div>
+
+            <div class='ad_text'><span ><%= @params["ad_text_text"] %></span></div>
+        </div>
+
+        <div style="clear: both;"></div>
 
         <div class='button_row'>
             <a class='display_url' href='#'><%= @params['display_url_text'] %></a>
