@@ -10,7 +10,7 @@ class DesignController < ApplicationController
 
   def live
     process_params
-    @layer_url = "/design/layer?" + @params.map { |k, v| "#{k}=#{CGI.escape(v)}" }.join('&')
+    @layer_url = "/design/layer?" + @params.map { |k, v| "#{k}=#{CGI.escape(v || '')}" }.join('&')
     @layer_url += '&layer='+params[:layer]
     render :kake_sport, :layout => false
   end
@@ -18,6 +18,11 @@ class DesignController < ApplicationController
   def layer
     process_params
     render :partial => "layer_" + @layer_name, :layout => false
+  end
+
+  #### ihs
+  def balls
+    render 'balls', :layout => false
   end
 
   protected

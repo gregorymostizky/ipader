@@ -1,0 +1,68 @@
+<%
+   @params["first_text"] ||= 'The Future Is'
+   @params["second_text"] ||= 'NOW!'
+
+   @params["layer_background_color"] ||= '#45484d'
+
+   @params["ball_file"] ||= '/balls/logo.png'
+%>
+
+<style type="text/css">
+
+    .layer {
+        background: <%= @params["layer_background_color"] %>; /* Old browsers */
+
+        border: 1px solid #fff;
+
+        border-radius: 3px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+
+        -moz-box-shadow: 2px 1px 4px 4px rgba(10, 10, 10, .5);
+        -webkit-box-shadow: 2px 1px 4px 4px rgba(10, 10, 10, .5);
+        box-shadow: 2px 1px 6px 4px rgba(10, 10, 10, .5);
+
+        color: #fff;
+
+        text-align: center;
+
+        padding-bottom: 4px;
+    }
+
+    .header {
+        border-bottom: 1px solid #666;
+        font-weight: 200;
+        font-size: 12px;
+        color: #888;
+        padding: 4px 0px 4px 24px;
+        text-align: left;
+    }
+
+    .header a {
+        color: #666;
+        float: right;
+        padding-right: 8px;
+    }
+
+    .layer .iframe {
+        width: 500px;
+        height: 300px;
+
+        border: 1px solid #000;
+    }
+
+
+</style>
+
+<div class="layer">
+    <div class="header">
+        Powered By Kontera
+        <a href="#">Close</a>
+        <a href="#">Ad Choices</a>
+    </div>
+
+
+    <iframe class='iframe' width="500px" height="300px" src="/design/balls?text=<%= @params["first_text"] %>&stext=<%= @params["second_text"] %>&img=<%= @params["ball_file"] %>" frameborder="0">
+    </iframe>
+
+</div>

@@ -1,64 +1,86 @@
 <script type="text/javascript" src="/farbtastic/farbtastic.js"></script>
 <link rel="stylesheet" href="/farbtastic/farbtastic.css" type="text/css"/>
 
-<div class='top'><span>HTML5 Layer Builder</span></div>
+<div class='top'><span>Layer Composer</span></div>
 
 <div id='layers_zone'>
+
+    <div class="top_buttons">
+        <p class="submit">
+            <!-- <input type="submit" id='reload' value="Re-draw"> -->
+
+            <input type="submit" id='live_preview' value="Live Preview">
+            <script type="text/javascript">
+                $('#live_preview').click(function(e) {
+                    e.preventDefault();
+                    $('#layer_params_form').attr('action', '/design/live').attr('target', '_blank').submit();
+                });
+//                $('#reload').click(function(e) {
+//                    e.preventDefault();
+//                    $('#layer_params_form').attr('action', '/design').attr('target', '').submit();
+//                });
+            </script>
+        </p>
+    </div>
+
+    <div class='layer_sandbox'>
+    </div>
 
     <div class='layer_menu'>
         <ul>
             <li><a href='/design?layer=text'>Classic Text & Logo</a></li>
             <li><a href='/design?layer=text5'>HTML5 Text & Logo</a></li>
-            <li><a href='/design?layer=text5b'>HTML5 Text & Logo II</a></li>
             <li><a href='/design?layer=facebook_youtube'>Facebook + Youtube</a></li>
             <li><a href='/design?layer=freedom5'>HTML5 Freedom</a></li>
             <li><a href='/design?layer=mobile'>Mobile</a></li>
         </ul>
     </div>
 
+    <div class="colorpicker">
+        <div></div>
+    </div>
+
+
+    <div style="clear: both;"></div>
+
     <div class="layer_view">
         <%= render :partial => ("layer_"+@layer_name) %>
     </div>
 
-    <div id='form-holder'>
-            <form id="layer_params_form" class='form' action="" method="post" enctype="multipart/form-data">
-                <p class="submit">
-                    <input type="submit" id='reload' value="Re-draw">
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.layer_view').draggable();
+        });
+    </script>
 
-                    <input type="submit" id='live_preview' value="Live Preview">
-                    <script type="text/javascript">
-                        $('#live_preview').click(function(e) {
-                            e.preventDefault();
-                            $('#layer_params_form').attr('action','/design/live').attr('target','_blank').submit();
-                        });
-                        $('#reload').click(function(e) {
-                            e.preventDefault();
-                            $('#layer_params_form').attr('action','/design').attr('target','').submit();
-                        });
-                    </script>
+    <div id='form-holder'>
+        <form id="layer_params_form" class='form' action="" method="post" enctype="multipart/form-data">
+
+            <input type='hidden' value="<%= @layer_name %>" name="layer">
+
+            <div style="clear: both;"></div>
+
+            <% @params.keys.sort.each_with_index do |k, i| %>
+                <p>
+                    <label for='<%= k %>'><%= k.humanize %></label>
+                    <% if k =~ /file$/i %>
+                        <input name="<%= k %>" id="<%= k %>" type="file">
+                        <input name="<%= k+'_uploaded' %>" value="<%= @params[k] %>" type="hidden">
+                    <% else %>
+                        <input name="<%= k %>" value="<%= @params[k] %>">
+                    <% end %>
                 </p>
 
-                <input type='hidden' value="<%= @layer_name %>" name="layer">
-
-                <div style="clear: both;"></div>
-
-                <% @params.keys.sort.each do |k| %>
-                    <p>
-                        <% if k =~ /file$/i %>
-                            <input name="<%= k %>" id="<%= k %>"  type="file">
-                            <input name="<%= k+'_uploaded' %>" value="<%= @params[k] %>" type="hidden">
-                        <% else %>
-                            <input name="<%= k %>" value="<%= @params[k] %>" >
-                        <% end  %>
-                        <label for='<%= k %>'><%= k.humanize %></label>
-                    </p>
+                <% if i % 4 == 3 %>
+                    <div style="clear:both;"></div>
                 <% end %>
+            <% end %>
 
-                <div id='editor_area'>
-                </div>
+            <div id='editor_area'>
+            </div>
 
-            </form>
-        </div>
+        </form>
+    </div>
 
 
     <div style="clear:both;"></div>
@@ -69,8 +91,6 @@
 
 <div style="clear: both;"></div>
 
-<div id="colorpicker"></div>
-
 <div style="clear:both;"></div>
 
 
@@ -79,8 +99,12 @@
     $(document).ready(function() {
         $('[name$=color]').focus(function(e) {
             console.log(e.srcElement);
-            $('#colorpicker').farbtastic(e.srcElement);
+            $('.colorpicker div').farbtastic(e.srcElement);
         });
+        $('[name]').focusout(function(e) {
+            $('#layer_params_form').attr('action', '/design').attr('target', '').submit();
+        });
+
     });
 </script>
 

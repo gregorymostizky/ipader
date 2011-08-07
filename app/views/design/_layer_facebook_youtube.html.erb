@@ -1,9 +1,12 @@
 <%
    @params["ad_width"] ||= "400";
    @params["ad_height"] ||= "300";
-   @params["youtube_uid"] ||= "O_bvEoao2Ps"
+   @params["youtube_url"] ||= "http://youtu.be/O_bvEoao2Ps"
    @params["layer_gradient_start_color"] ||= '#fef6f6'
    @params["layer_gradient_end_color"] ||= '#000000'
+
+   youtube_url = @params["youtube_url"]
+   youtube_embed_url = "http://www.youtube.com/embed/" + @params["youtube_url"].split(/\//)[-1]
 
 %>
 
@@ -62,17 +65,17 @@
         <a href="#">Ad Choices</a>
     </div>
 
-    <iframe width="<%= @params["ad_width"] %>" height="<%= @params["ad_height"].to_i - 60 %>" src="http://www.youtube.com/embed/<%= @params["youtube_uid"] %>" frameborder="0" allowfullscreen></iframe>
+    <iframe width="<%= @params["ad_width"] %>" height="<%= @params["ad_height"].to_i - 60 %>" src="<%= youtube_embed_url %>" frameborder="0" allowfullscreen></iframe>
     <div id="fb-root"></div>
     <script src="http://connect.facebook.net/en_US/all.js#appId=150868531660709&amp;xfbml=1"></script>
 
     <div class="social">
         <div class="fb" style="float:left; width: <%= @params["ad_width"].to_i - 80 %>px;">
-            <fb:like href="http://youtu.be/<%= @params["youtube_uid"] %>" send="true" width="<%= @params["ad_width"].to_i - 80 %>" show_faces="true" font=""></fb:like>
+            <fb:like href="<%= youtube_url %>" send="true" width="<%= @params["ad_width"].to_i - 80 %>" show_faces="true" font=""></fb:like>
         </div>
 
         <div class="gplus" style="float: left; vertical-align: center;">
-            <g:plusone size="small" href="http://youtu.be/<%= @params["youtube_uid"] %>"></g:plusone>
+            <g:plusone size="small" href="<%= youtube_url %>"></g:plusone>
 
             <script type="text/javascript">
                 (function() {

@@ -2,44 +2,52 @@ body {
     /*background-image: url("/images/light-tile.gif");*/
     /*background-repeat: repeat;*/
 
-    background-color: white;
-    background-image: url('/images/main_bg.jpg');
+    background-color: #FFF;
+    /*background-image: url('/images/main_bg.jpg');*/
     background-repeat: no-repeat;
     background-position: 0px 60px;
 
     margin: 0px;
 
     overflow-y: scroll;
+    /*overflow: hidden;*/
 }
 
 .top {
     height: 40px;
-    background-color: #EDEFEA;
-    margin: 0px;
+    background-color: #444;
+    margin: -5px;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 10px;
 }
 
 .top span {
     font-weight: 500;
-    color: #444;
+    color: #FFF;
     font-size: 24px;
 }
 
-#layers_zone {
-    padding-top: 20px;
+.layer_sandbox {
+    float: left;
+    margin-left: 40px;
+    background-image: url(/images/stripes.png);
+    background-repeat:  repeat;
+    border: 1px solid #AAA;
+    border-radius: 8px;
+    width: 700px;
+    height: 350px;
 }
 
 .layer_view {
     position: absolute;
-    left: 440px;
-    top: 100px;
+    left: 60px;
+    top: 120px;
 }
 
 .layer_menu {
-    float: right;
+    float: left;
     margin-top: 50px;
-    margin-right: 60px;
+    margin-left: 40px;
     background: #EDEFEA;
     border-radius: 8px;
 
@@ -47,6 +55,12 @@ body {
     -moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
     -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
 
+}
+
+.colorpicker {
+    float: left;
+    margin-left: 20px;
+    margin-top: 40px;
 }
 
 .layer_menu ul {
@@ -98,16 +112,28 @@ input:hover, input:focus {
 .form {
 }
 
+.form p {
+    display: block;
+    float: left;
+    width: 240px;
+}
+
 .form label {
     margin-left: 10px;
+    margin-right: 20px;
     color: #444;
     text-transform: capitalize;
     font-family: Verdana, Tahoma, sans-serif;
     font-size: small;
 }
 
+.top_buttons {
+    margin-top: -10px;
+    margin-left: 40px;
+}
+
 #live_preview {
-    background: #ff3333;
+    background: #cc0000;
     padding:  14px 16px;
     margin-left: 8px;
 }
