@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	$ = $KKK;
 	var isMobile = demo_layer_url.match(/layer=mobile/);
     $(".YLight").css('background-color', 'yellow')
     $(".YLight").mouseover(function() {
@@ -14,6 +15,20 @@ $(document).ready(function() {
                     width: window.innerWidth,
 					height: window.innerHeight
                 });
+			if(!isMobile) {
+				layer.css('position', 'absolute').offset({left:jqthis.offset().left, top:jqthis.offset().top});
+				layer.hide();
+			} else {
+				layer.css({
+						position: 'absolute',
+						left:$(window).scrollLeft() + window.innerWidth, 
+						top:$(window).scrollTop() -10});
+
+				layer.css({
+					'-webkit-transition-property':'all',
+					'-webkit-transition-duration': '200ms'});
+			};
+
             $('body').append(layer);
             jqthis.data('layer', layer);
             console.log('create a new layer');
@@ -29,33 +44,16 @@ $(document).ready(function() {
 					konaCloseLayer();
                 }
             });
-			var translation = '(' + -1*window.innerWidth + 'px,0,0)';
 			show = function() {
-				if(isMobile) {
-					layer.load(function() {
-						if(frames[0].animation_direction === 'horizontal'){
-						}
-						layer.show().css('position', 'absolute').offset({left:$(window).scrollLeft() + window.innerWidth, top:$(window).scrollTop() -10})
-						.css('-webkit-transform','translate3d' + translation)
-						.css({
-								'-webkit-transition': '-webkit-transform 0.2s ease-in',
-								'-webkit-backface-visibility': 'hidden',
-								'-webkit-perspective':'1000'
-								});
-					});
+				if(!isMobile) {
+					layer.show(2000);
 				} else {
-						layer.show(2000).css('position', 'absolute').offset({left:jqthis.offset().left, top:jqthis.offset().top});
+					layer.css('left', '0px');
 				}
-			};
+			}
 			hide = function() {
 				if(isMobile) {
-					layer.css('-webkit-transform','translate3d' + translation)
-						.css({
-								'-webkit-transition': '-webkit-transform 1s ease-in-out',
-								'-webkit-backface-visibility': 'hidden',
-								'-webkit-perspective':'1000'
-								});
-					setTimeout(function() {layer.hide();}, 500);
+					layer.css('left', '-' + window.innerWidth + 'px');
 				} else {
 					layer.hide();
 				}
@@ -63,8 +61,11 @@ $(document).ready(function() {
 			konaCloseLayer = function() {
 				hide();
 			};
-        }
-		show();
+			layer.load(show);
+        } else {
+			console.log('layer exists');
+			show();
+		}
     })
     $(".YLight").mouseout(function() {
         console.log('mouse out HL');
@@ -74,7 +75,7 @@ $(document).ready(function() {
             if (!jqthis.data('layer') || jqthis.data('layer').data('mouseover')) {
                 return;
             }
-            //jqthis.data('layer').hide('slow');
+            jqthis.data('layer').hide('slow');
 			konaCloseLayer();
         }, 1000);
     })
