@@ -2,3 +2,9 @@
 db/*.sqlite3
 log/*.log
 tmp/
+public/upload/*.gif
+public/upload/*.jpg
+public/upload/*.png
+
+
+

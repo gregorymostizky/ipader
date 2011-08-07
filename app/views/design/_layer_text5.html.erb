@@ -16,6 +16,8 @@
    @params["layer_gradient_start_color"] ||= '#000000'
    @params["layer_gradient_end_color"] ||= '#45484d'
 
+   @params["image_file"] ||= "/images/jersey2.jpg"
+
 %>
 
 <style type="text/css">
@@ -126,7 +128,7 @@
 
     <div class="ad_title"><%= @params['ad_title_text'] %></div>
 
-    <div class="ad_logo"><img src="/images/jersey2.jpg"></div>
+    <div class="ad_logo"><img src="<%= @params["image_file"] %>"></div>
 
     <div style="float:left; margin-top: 20px;">
         <div class="ad_text"><%= @params["ad_text_text"] %></div>
