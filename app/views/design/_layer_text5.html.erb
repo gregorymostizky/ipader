@@ -18,12 +18,14 @@
 
    @params["image_file"] ||= "/images/jersey2.jpg"
 
+   @params["facebook_url"] ||= ""
+
 %>
 
 <style type="text/css">
     .layer {
         width: 400px;
-        height: 260px;
+        height: <%= @params["facebook_url"].blank? ? "260" : "280" %>px;
 
         background: <%= @params["layer_gradient_end_color"] %>; /* Old browsers */
         background: -moz-linear-gradient(top, <%= @params["layer_gradient_end_color"] %> 0%, <%= @params["layer_gradient_start_color"] %> 100%); /* FF3.6+ */
@@ -47,6 +49,8 @@
         color: #fff;
 
         text-align: center;
+
+        padding-bottom: 4px;
     }
 
     .ad_title {
@@ -116,6 +120,10 @@
         color: <%= @params["ad_primary_color"] %>;
         font-size: 12px;
     }
+
+    .fb {
+        margin-top: 6px;
+    }
 </style>
 
 
@@ -123,7 +131,7 @@
     <div class="header">
         Powered By Kontera
         <a href="#">Close</a>
-        <a href="#"><%= @params["ad_choice_text"]%></a>
+        <a href="#"><%= @params["ad_choice_text"] %></a>
     </div>
 
     <div class="ad_title"><%= @params['ad_title_text'] %></div>
@@ -137,5 +145,14 @@
         <div style="clear:both;"></div>
     </div>
 
+    <div style="clear: both;"></div>
+
+    <% unless @params["facebook_url"].blank? %>
+        <div class="fb">
+            <div id="fb-root"></div>
+            <script src="http://connect.facebook.net/en_US/all.js#appId=150868531660709&amp;xfbml=1"></script>
+            <fb:like href="http://youtu.be/<%= @params["facebook_url"] %>" send="true" width="360px" colorscheme="dark" show_faces="true" font=""></fb:like>
+        </div>
+    <% end %>
 
 </div>
