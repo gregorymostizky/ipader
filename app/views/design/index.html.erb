@@ -60,16 +60,20 @@
 
             <div style="clear: both;"></div>
 
-            <% @params.keys.sort.each do |k| %>
+            <% @params.keys.sort.each_with_index do |k,i| %>
                 <p>
+                    <label for='<%= k %>'><%= k.humanize %></label>
                     <% if k =~ /file$/i %>
                         <input name="<%= k %>" id="<%= k %>" type="file">
                         <input name="<%= k+'_uploaded' %>" value="<%= @params[k] %>" type="hidden">
                     <% else %>
                         <input name="<%= k %>" value="<%= @params[k] %>">
                     <% end %>
-                    <label for='<%= k %>'><%= k.humanize %></label>
                 </p>
+
+                <% if i % 4 == 3 %>
+                    <div style="clear:both;"></div>
+                <% end %>
             <% end %>
 
             <div id='editor_area'>
