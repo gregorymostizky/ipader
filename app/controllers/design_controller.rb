@@ -14,7 +14,9 @@ class DesignController < ApplicationController
     process_params
     @layer_url = "/design/layer?" + @params.map { |k, v| "#{k}=#{CGI.escape(v || '')}" }.join('&')
     @layer_url += '&layer='+params[:layer]
-    render :cnn, :layout => false
+	page = :cnn
+	page = :cnn_mobile if layer =~ /mobile/
+    render page, :layout => false
   end
 
   def email
