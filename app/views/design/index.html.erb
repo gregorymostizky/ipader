@@ -7,7 +7,7 @@
 
     <div class="top_buttons">
         <p class="submit">
-            <input type="submit" id='reload' value="Re-draw">
+            <!-- <input type="submit" id='reload' value="Re-draw"> -->
 
             <input type="submit" id='live_preview' value="Live Preview">
             <script type="text/javascript">
@@ -15,10 +15,10 @@
                     e.preventDefault();
                     $('#layer_params_form').attr('action', '/design/live').attr('target', '_blank').submit();
                 });
-                $('#reload').click(function(e) {
-                    e.preventDefault();
-                    $('#layer_params_form').attr('action', '/design').attr('target', '').submit();
-                });
+//                $('#reload').click(function(e) {
+//                    e.preventDefault();
+//                    $('#layer_params_form').attr('action', '/design').attr('target', '').submit();
+//                });
             </script>
         </p>
     </div>
@@ -60,7 +60,7 @@
 
             <div style="clear: both;"></div>
 
-            <% @params.keys.sort.each_with_index do |k,i| %>
+            <% @params.keys.sort.each_with_index do |k, i| %>
                 <p>
                     <label for='<%= k %>'><%= k.humanize %></label>
                     <% if k =~ /file$/i %>
@@ -101,8 +101,8 @@
             console.log(e.srcElement);
             $('.colorpicker div').farbtastic(e.srcElement);
         });
-        $('[name$=color]').focusout(function(e) {
-            $('.colorpicker').html('<div></div>');
+        $('[name]').focusout(function(e) {
+            $('#layer_params_form').attr('action', '/design').attr('target', '').submit();
         });
 
     });
