@@ -44,8 +44,12 @@
         padding-right: 8px;
     }
 
-    .layer .iframe {
+    .layer {
         width: 500px;
+    }
+
+    .layer .iframe {
+        width: 498px;
         height: 300px;
 
         border: 1px solid #000;
@@ -62,7 +66,7 @@
     </div>
 
 
-    <iframe class='iframe' width="500px" height="300px" src="/design/balls?text=<%= @params["first_text"] %>&stext=<%= @params["second_text"] %>&img=<%= @params["ball_file"] %>" frameborder="0">
+    <iframe class='iframe' src="/design/balls?text=<%= @params["first_text"] %>&stext=<%= @params["second_text"] %>&img=<%= @params["ball_file"] %>" frameborder="0">
     </iframe>
 
 </div>

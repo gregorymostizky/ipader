@@ -38,6 +38,14 @@
         </ul>
     </div>
 
+    <script type="text/javascript">
+        $('.layer_menu a').click(function(e) {
+            e.preventDefault();
+            var action = $(e.srcElement).attr('href');
+            $('#layer_params_form').attr('action', action).attr('target', '').submit();
+        });
+    </script>
+
     <div class="colorpicker">
         <div></div>
     </div>

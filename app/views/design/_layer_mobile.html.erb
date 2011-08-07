@@ -3,7 +3,7 @@
 @params["tel"] ||= "123456"
 @params["animation_direction"] ||= 'horizontal'
 @params["main_img_file"] ||= "/images/renault-1.png"
-@params["call_img_file"] ||= "/images/callus.png"
+@params["callus_text"] ||= "CALL US"
 
 %>
 <html>
@@ -29,7 +29,10 @@ $(document).ready(function(){
 <div style="margin-top:100px;">
 <img src=<%= @params["main_img_file"] %> style="width:320px; height: 250px;"></img>
 </div>
-<div><img id='img_phone' src=<%= @params["call_img_file"] %> style ="width:320px; height:40px;"></img>
+<div style ="width:160px; height:50px;background-color: black;">
+<div style="color:red;font:30; text-align:center;margin-top:20px;">
+	<%= @params["callus_text"] %>
+</div>
 </div>
 </div>
 </body>
