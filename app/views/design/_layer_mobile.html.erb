@@ -1,6 +1,38 @@
+<%
+@params["background_color"] ||= "black"
+@params["tel"] ||= "123456"
+@params["main_img_file"] ||= "http://10.60.11.98/renault.png"
+@params["animation_direction"] ||= 'horizontal'
+
+%>
 <html>
 <head>
+<meta name="viewport" content="width=320" />                                        
+<meta name="viewport" content="initial-scale=1, user-scalable=false" />
+<script>
+	var animation_direction = '<%= @params["animation_direction"] %>';
+</script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$('#img_phone').click(function(){
+		//window.location = 'tel://<%= @params["tel"] %>'
+		var a = 'tel://0549986499'
+		window.location = a;
+	}
+	)
+})
+</script>
 </head>
 <body>
-<img src="http://3.bp.blogspot.com/_S_K-K9nthdY/S2xffccrQ6I/AAAAAAAAAT0/RK9OjcPC35o/s320/peugeot-modif-innovative-design-for-a-car-that-can-squeeze-for-tight-space-praking3.jpg" onclick="window.location='tel://<%= @params["tel"]%>'"></img>
-</body></html>
+<!--div onclick="window.parent.konaCloseLayer();" style="background-color:<%= @params["background_color"] %>; height:100%; width:100%;opacity:1;position:absolute; left:0px;"-->
+<div onclick="window.parent.konaCloseLayer();" style="background-color:red; height:100%; width:100%;opacity:1;position:absolute; left:0px;">
+<div style="margin-top:100px;">
+<img src=<%= @params["main_img_file"] %>></img>
+</div>
+<div><img id='img_phone' src="http://10.60.11.98/callus.png"></img>
+</div>
+</div>
+</body>
+</head>
+</html>

@@ -12,7 +12,7 @@ class DesignController < ApplicationController
     process_params
     @layer_url = "/design/layer?" + @params.map { |k, v| "#{k}=#{CGI.escape(v)}" }.join('&')
     @layer_url += '&layer='+params[:layer]
-    render :foxnews, :layout => false
+    render :kake_sport, :layout => false
   end
 
   def layer
