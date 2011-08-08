@@ -17,7 +17,10 @@
 </script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script>
-$(document).ready(function(evt){
+$(document).ready(function(){
+	if(window.demo_layer_url) {
+		$('#main_div').css('zoom', '100%');
+	}
 	$('#callus').click(function(){
 		var a = 'tel://<%= @params["tel_text"] %>'
 		window.location = a;
@@ -34,7 +37,7 @@ $('#layer_group').click(function(){
 </script>
 </head>
 <body>
-<div onclick="window.parent.konaCloseLayer();" style="background-color:<%= @params['background_color'] %>; height:100%; width:100%;opacity:1;position:absolute; left:0px;">
+<div id='main_div' onclick="window.parent.konaCloseLayer();" style="background-color:<%= @params['background_color'] %>; height:480px; width:320px;opacity:1;position:absolute; left:0px;zoom:70%">
 <div id='layer_group' style="margin-top:100px;" >
 <img src=<%= @params["main_img_file"] %> style="width:320px; height: 250px;"></img>
 </div>
