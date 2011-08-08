@@ -1,58 +1,60 @@
 <%
-@params["background_color"] ||= "black"
-@params["tel_text"] ||= "0545228483"
-@params["animation_direction"] ||= 'horizontal'
-@params["main_img_file"] ||= "/images/renault-1.png"
-@params["callus_text"] ||= "CALL US"
-@params["site_text"] ||= "JUMP IN"
-@params["site_url"] ||= "http://renault.com"
+   @params["background_color"] ||= "black"
+   @params["tel_text"] ||= "0545228483"
+   @params["animation_direction"] ||= 'horizontal'
+   @params["main_img_file"] ||= "/images/renault-1.png"
+   @params["callus_text"] ||= "CALL US"
+   @params["site_text"] ||= "JUMP IN"
+   @params["site_url"] ||= "http://renault.com"
+
+   zoom = (@mode == :live) ? '100%' : '70%'
 
 %>
 <html>
 <head>
-<meta name="viewport" content="width=320" />                                        
-<meta name="viewport" content="initial-scale=1, user-scalable=false" />
-<script>
-	var animation_direction = '<%= @params["animation_direction"] %>';
-</script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-	if(window.demo_layer_url) {
-		$('#main_div').css('zoom', '100%');
-	}
-	$('#callus').click(function(){
-		var a = 'tel://<%= @params["tel_text"] %>'
-		window.location = a;
-		return false;
-	});
-	$('#site').click(function(){
-		window.parent.location = '<%= @params["site_url"] %>';
-		return false;
-	});
-$('#layer_group').click(function(){
-		return false;
-	});
-})
-</script>
+    <meta name="viewport" content="width=320"/>
+    <meta name="viewport" content="initial-scale=1, user-scalable=false"/>
+    <script>
+        var animation_direction = '<%= @params["animation_direction"] %>';
+    </script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            if (window.demo_layer_url) {
+                $('#main_div').css('zoom', '100%');
+            }
+            $('#callus').click(function() {
+                var a = 'tel://<%= @params["tel_text"] %>'
+                window.location = a;
+                return false;
+            });
+            $('#site').click(function() {
+                window.parent.location = '<%= @params["site_url"] %>';
+                return false;
+            });
+            $('#layer_group').click(function() {
+                return false;
+            });
+        })
+    </script>
 </head>
 <body>
-<div id='main_div' onclick="window.parent.konaCloseLayer();" style="background-color:<%= @params['background_color'] %>; height:480px; width:320px;opacity:1;position:absolute; left:0px;zoom:70%">
-<div id='layer_group' style="margin-top:100px;" >
-<img src=<%= @params["main_img_file"] %> style="width:320px; height: 250px;"></img>
-</div>
-<div class="konaDiv" style ="width:320px; height:50px;background-color:<%= @params['background_color'] %>;color:red;font-size:25px; text-align:center;">
-<table>
-<tr>
-<td id='callus' style="color:red;font-size:25px;width:160px;text-align:left;">
-	<%= @params["callus_text"] %>
-</td>
-<td id='site' style="color:red;font-size:25px;width:160px;text-align:right;">
-	<%= @params["site_text"] %>
-</td>
-</tr>
-</table>
-</div>
+<div id='main_div' onclick="window.parent.konaCloseLayer();" style="background-color:<%= @params['background_color'] %>; height:480px; width:320px;opacity:1;position:absolute; left:0px;zoom:<%= zoom %>">
+    <div id='layer_group' style="margin-top:100px;">
+        <img src=<%= @params["main_img_file"] %> style="width:320px; height: 250px;"></img>
+    </div>
+    <div class="konaDiv" style="width:320px; height:50px;background-color:<%= @params['background_color'] %>;color:red;font-size:25px; text-align:center;">
+        <table>
+            <tr>
+                <td id='callus' style="color:red;font-size:25px;width:160px;text-align:left;">
+                    <%= @params["callus_text"] %>
+                </td>
+                <td id='site' style="color:red;font-size:25px;width:160px;text-align:right;">
+                    <%= @params["site_text"] %>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
 </div>
 </body>
