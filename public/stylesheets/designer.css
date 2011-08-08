@@ -70,7 +70,8 @@ h1 span {
     background: -webkit-linear-gradient(rgba(0,0,0,.3), transparent);
 }
 #live_preview {
-    background-color: #5C8A43;
+    /*background-color: #5C8A43;*/
+    background-color: #cc0000;
 }
 #email_preview {
     background-color: #326378;
