@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$ = $KKK;
-	var isMobile = demo_layer_url.match(/layer=mobile/);
+	var isMobile = demo_layer_url.match(/layer=mobile|layer=balls/) 
     $(".YLight").css('background-color', 'yellow')
     $(".YLight").mouseover(function() {
         console.log('mouse over HL');
@@ -41,7 +41,9 @@ $(document).ready(function() {
                 console.log('mouse out layer');
                 layer.data('mouseover', false);
                 if (!layer.data('highlight').data('mouseover')) {
-					konaCloseLayer();
+					if(!window.kona_never_close) {
+						konaCloseLayer();
+					}
                 }
             });
 			show = function() {
@@ -59,6 +61,7 @@ $(document).ready(function() {
 				}
 			};
 			konaCloseLayer = function() {
+				if(window.kona_never_close) return;
 				hide();
 			};
 			layer.load(show);
@@ -76,7 +79,9 @@ $(document).ready(function() {
                 return;
             }
             jqthis.data('layer').hide('slow');
-			konaCloseLayer();
+			if(!window.kona_never_close) {
+				konaCloseLayer();
+			}
         }, 1000);
     })
 

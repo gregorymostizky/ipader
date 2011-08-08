@@ -7,6 +7,10 @@
    @params["ball_file"] ||= '/balls/logo.png'
 %>
 
+<script>
+	window.kona_never_close = true;
+
+</script>
 <style type="text/css">
 
     .layer {
@@ -43,18 +47,14 @@
         float: right;
         padding-right: 8px;
     }
-
-    .layer {
-        width: 500px;
-    }
-
-    .layer .iframe {
-        width: 498px;
-        height: 300px;
-
-        border: 1px solid #000;
-    }
-
+	.iframe {
+		width: 700px;
+		height: 350px;
+	}
+	.iframe_live {
+		width: 100%;
+		height: 100%;
+	}
 
 </style>
 
@@ -70,7 +70,8 @@
 -->
 
 
-    <iframe class='iframe' src="/design/balls?text=<%= @params["first_text"] %>&stext=<%= @params["second_text"] %>&img=<%= @params["ball_file"] %>" frameborder="0">
+    <!--iframe class='iframe' src="/design/balls?text=<%= @params["first_text"] %>&stext=<%= @params["second_text"] %>&img=<%= @params["ball_file"] %>" frameborder="0" style="width:100%;height:100%;"-->
+    <iframe class='iframe' src="/design/balls?text=<%= @params["first_text"] %>&stext=<%= @params["second_text"] %>&img=<%= @params["ball_file"] %>" frameborder="0" style="width:700px;height:350px;">
     </iframe>
 
 <!--
