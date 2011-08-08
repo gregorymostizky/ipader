@@ -14,8 +14,8 @@ class DesignController < ApplicationController
     process_params
     @layer_url = "/design/layer?" + @params.map { |k, v| "#{k}=#{CGI.escape(v || '')}" }.join('&')
     @layer_url += '&layer='+params[:layer]
-	page = :cnn
-	page = :cnn_mobile if params[:layer] =~ /mobile/
+    page = :cnn
+    page = :cnn_mobile if params[:layer] =~ /mobile/
     render page, :layout => false
   end
 
@@ -23,7 +23,7 @@ class DesignController < ApplicationController
     process_params
     @layer_url = "http://" + request.domain
     @layer_url += ":#{request.port}" if request.port
-    @layer_url += "/design/layer?" + @params.map { |k, v| "#{k}=#{CGI.escape(v || '')}" }.join('&')
+    @layer_url += "/design/live?" + @params.map { |k, v| "#{k}=#{CGI.escape(v || '')}" }.join('&')
     @layer_url += '&layer='+params[:layer]
 
     email = params[:email] || 'gregory.mostizky@kontera.com'

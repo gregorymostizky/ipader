@@ -8,6 +8,8 @@
         <input type="submit" id='live_preview' value="Live Preview">
     </p>
     <p class="sec email">
+        <input id='email' name='email' size='40'>
+        <input type="submit" id='email_preview' value="Email Preview">
         <script type="text/javascript">
             $('#live_preview').click(function(e) {
                 e.preventDefault();
@@ -19,8 +21,6 @@
                 $('#layer_params_form').attr('action', '/design/email?email='+email).attr('target', '').submit();
             });
         </script>
-        <input id='email' name='email' size='40'>
-        <input type="submit" id='email_preview' value="Email Preview">
     </p>
 </div>
 
