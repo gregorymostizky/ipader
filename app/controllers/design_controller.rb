@@ -13,7 +13,7 @@ class DesignController < ApplicationController
   def live
     process_params
     @layer_url = "/design/layer?" + @params.map { |k, v| "#{k}=#{CGI.escape(v || '')}" }.join('&')
-    @layer_url += '&layer='+params[:layer]
+    @layer_url += '&layer='+params[:layer] + "&mode=live"
 	page = :cnn
 	page = :cnn_mobile if params[:layer] =~ /mobile/
     render page, :layout => false
@@ -34,6 +34,7 @@ class DesignController < ApplicationController
 
   def layer
     process_params
+	@mode = :live if params[:mode] 
     render :partial => "layer_" + @layer_name, :layout => false
   end
 
