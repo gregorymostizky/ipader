@@ -4,7 +4,7 @@
 @params["animation_direction"] ||= 'horizontal'
 @params["main_img_file"] ||= "/images/renault-1.png"
 @params["callus_text"] ||= "CALL US"
-@params["site_text"] ||= "VISIT RENAULT"
+@params["site_text"] ||= "JUMP IN"
 @params["site_url"] ||= "http://renault.com"
 
 %>
@@ -38,13 +38,13 @@ $('#layer_group').click(function(){
 <div id='layer_group' style="margin-top:100px;" >
 <img src=<%= @params["main_img_file"] %> style="width:320px; height: 250px;"></img>
 </div>
-<div class="konaDiv" style ="width:320px; height:50px;background-color:black;color:red;font-size:25px; text-align:center;">
+<div class="konaDiv" style ="width:320px; height:50px;background-color:<%= @params['background_color'] %>;color:red;font-size:25px; text-align:center;">
 <table>
 <tr>
-<td id='callus' style="color:red;font-size:25px;">
+<td id='callus' style="color:red;font-size:25px;width:160px;text-align:left;">
 	<%= @params["callus_text"] %>
 </td>
-<td id='site' style="color:red;font-size:25px;">
+<td id='site' style="color:red;font-size:25px;width:160px;text-align:right;">
 	<%= @params["site_text"] %>
 </td>
 </tr>
